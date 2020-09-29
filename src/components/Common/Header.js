@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 const Space = styled.div`
     height: 4rem;
 `;
-const Header = () => {
+const Header = ({ user, logout }) => {
     return (
         <>
             <HeaderBlock>
@@ -38,7 +38,17 @@ const Header = () => {
                         TodoList
                     </Link>
                     <div className="right">
-                        <Button to="/login">로그인</Button>
+                        {user ? (
+                            <Button
+                                onClick={() => {
+                                    logout();
+                                }}
+                            >
+                                로그아웃
+                            </Button>
+                        ) : (
+                            <Button to="/login">로그인</Button>
+                        )}
                     </div>
                 </Wrapper>
             </HeaderBlock>
