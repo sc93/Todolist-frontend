@@ -40,34 +40,40 @@ const LinkColor = styled(Link)`
     color: ${palette.purple[13]};
     text-decoration: underline;
 `;
-const RegisterForm = ({ form, onChange }) => {
+const RegisterForm = ({ form, onChange, onSubmit }) => {
     return (
         <RegisterFormBlock>
-            <div>
-                <p>아이디</p>
-                <StyledInput name="id" value={form.id} onChange={onChange} />
-                <p>사용자명</p>
-                <StyledInput
-                    name="username"
-                    value={form.username}
-                    onChange={onChange}
-                />
-                <p>비밀번호</p>
-                <StyledInput
-                    name="pw"
-                    type="password"
-                    value={form.pw}
-                    onChange={onChange}
-                />
-                <p>비밀번호확인</p>
-                <StyledInput
-                    name="pwConfirm"
-                    type="password"
-                    value={form.pwConfirm}
-                    onChange={onChange}
-                />
-            </div>
-            <ButtonMarginTop>회원가입</ButtonMarginTop>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <p>아이디</p>
+                    <StyledInput
+                        name="userid"
+                        value={form.userid}
+                        onChange={onChange}
+                    />
+                    <p>사용자명</p>
+                    <StyledInput
+                        name="username"
+                        value={form.username}
+                        onChange={onChange}
+                    />
+                    <p>비밀번호</p>
+                    <StyledInput
+                        name="userpw"
+                        type="password"
+                        value={form.userpw}
+                        onChange={onChange}
+                    />
+                    <p>비밀번호확인</p>
+                    <StyledInput
+                        name="pwConfirm"
+                        type="password"
+                        value={form.pwConfirm}
+                        onChange={onChange}
+                    />
+                </div>
+                <ButtonMarginTop>회원가입</ButtonMarginTop>
+            </form>
             <p>
                 <LinkColor to="/login">이미 계정이 있으신가요?</LinkColor>
             </p>

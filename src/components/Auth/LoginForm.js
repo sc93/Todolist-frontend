@@ -40,25 +40,27 @@ const LinkColor = styled(Link)`
     color: ${palette.purple[13]};
     text-decoration: underline;
 `;
-const LoginForm = ({ form, onChange }) => {
+const LoginForm = ({ form, onChange, onSubmit }) => {
     return (
         <LoginFormBlock>
-            <div>
-                <p>아이디</p>
-                <StyledInput
-                    name="userid"
-                    value={form.userid}
-                    onChange={onChange}
-                />
-                <p>비밀번호</p>
-                <StyledInput
-                    name="userpw"
-                    type="password"
-                    value={form.userpw}
-                    onChange={onChange}
-                />
-            </div>
-            <ButtonMarginTop>로그인</ButtonMarginTop>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <p>아이디</p>
+                    <StyledInput
+                        name="userid"
+                        value={form.userid}
+                        onChange={onChange}
+                    />
+                    <p>비밀번호</p>
+                    <StyledInput
+                        name="userpw"
+                        type="password"
+                        value={form.userpw}
+                        onChange={onChange}
+                    />
+                </div>
+                <ButtonMarginTop>로그인</ButtonMarginTop>
+            </form>
             <p>
                 아직 계정이 없으신가요?{" "}
                 <LinkColor to="/register">가입하기</LinkColor>
