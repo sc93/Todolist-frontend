@@ -9,13 +9,26 @@ const TodoBlock = styled.div`
     border: 1px solid ${palette.gray[8]};
     display: inline-table;
 `;
-
-const Todo = ({ todo }) => {
-    const { title, body } = todo;
+const ThumbnailWrapper = styled.div`
+    height: 200px;
+    width: 100%;
+`;
+const ThumbnailImg = styled.img``;
+const CardHr = styled.hr`
+    margin: 4px;
+`;
+const Title = styled.div`
+    width: 350px;
+    height: 90px;
+    text-align: center;
+`;
+const Todo = ({ todo, onClick }) => {
+    const { todo_id, title, body } = todo;
     return (
-        <TodoBlock>
-            {title}
-            {body}
+        <TodoBlock onClick={() => onClick(todo_id)}>
+            <ThumbnailWrapper></ThumbnailWrapper>
+            <CardHr />
+            <Title>{title}</Title>
         </TodoBlock>
     );
 };

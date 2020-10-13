@@ -1,30 +1,95 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import palette from "../../lib/style/palette";
 import Todo from "./Todo";
+import { useHistory } from "react-router-dom";
 
 const TodolistBlock = styled.div``;
 const DateDisplay = styled.div`
     font-size: 2rem;
     font-weight: 500;
     color: ${palette.purple[11]};
-    margin-left: 1rem;
+    margin-left: 5rem;
+`;
+const CardListWrapper = styled.div`
+    width: 1650px;
+    height: 340px;
+    position: relative;
+    .leftArrow {
+        float: left;
+    }
+    .rightArrow {
+        float: right;
+    }
 `;
 const CardList = styled.div`
     display: flex;
+    float: left;
     justify-content: flex-start;
     overflow-x: hidden;
+    width: 1520px;
+    position: relative;
+`;
+const Arrow = styled.span`
+    img {
+        width: 64px;
+        height: 64px;
+        margin-top: 125px;
+    }
+`;
+const Blank = styled.span`
+    width: 64px;
+    height: 64px;
 `;
 
 const Todolist = ({ date, todolist }) => {
+    const history = useHistory();
+
+    const listEl = useRef(null);
+    const onClick = (id) => {
+        history.push("/todo/" + id);
+    };
+    const onMove = () => {
+        listEl.current.scrollTo({
+            top: 0,
+            left: 1520,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <TodolistBlock>
-            <DateDisplay>{date}</DateDisplay>
-            <CardList>
-                {todolist.map((todo) => (
-                    <Todo key={todo.todo_id} todo={todo} />
-                ))}
-            </CardList>
+            <DateDisplay>
+                {date.substring(0, 4) + "년"} {date.substring(4, 6) + "월"}
+            </DateDisplay>
+            <CardListWrapper>
+                {todolist.length >= 4 ? (
+                    <Arrow className="leftArrow">
+                        <img
+                            src={`${process.env.PUBLIC_URL}/icons/previous.png`}
+                            onClick={onMove}
+                        />
+                    </Arrow>
+                ) : (
+                    <Blank className="leftArrow">　</Blank>
+                )}
+                <CardList ref={listEl}>
+                    {todolist.map((todo) => (
+                        <Todo
+                            key={todo.todo_id}
+                            todo={todo}
+                            onClick={onClick}
+                        />
+                    ))}
+                </CardList>
+                {todolist.length >= 4 ? (
+                    <Arrow className="rightArrow">
+                        <img src={`${process.env.PUBLIC_URL}/icons/next.png`} />
+                    </Arrow>
+                ) : (
+                    <Blank className="rightArrow">　</Blank>
+                )}
+            </CardListWrapper>
         </TodolistBlock>
     );
 };
