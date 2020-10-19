@@ -44,15 +44,17 @@ const Blank = styled.span`
 
 const Todolist = ({ date, todolist }) => {
     const history = useHistory();
-
     const listEl = useRef(null);
+    const listCnt = todolist.length;
+    let pageNum = 1;
+
     const onClick = (id) => {
         history.push("/todo/" + id);
     };
     const onMove = () => {
         listEl.current.scrollTo({
             top: 0,
-            left: 1520,
+            left: 1520 * (pageNum - 1),
             behavior: "smooth",
         });
     };
@@ -63,11 +65,14 @@ const Todolist = ({ date, todolist }) => {
                 {date.substring(0, 4) + "년"} {date.substring(4, 6) + "월"}
             </DateDisplay>
             <CardListWrapper>
-                {todolist.length >= 4 ? (
+                {listCnt >= 4 ? (
                     <Arrow className="leftArrow">
                         <img
                             src={`${process.env.PUBLIC_URL}/icons/previous.png`}
-                            onClick={onMove}
+                            onClick={() => {
+                                pageNum = 1 == pageNum ? pageNum : pageNum - 1;
+                                onMove();
+                            }}
                         />
                     </Arrow>
                 ) : (
@@ -82,9 +87,18 @@ const Todolist = ({ date, todolist }) => {
                         />
                     ))}
                 </CardList>
-                {todolist.length >= 4 ? (
+                {listCnt >= 4 ? (
                     <Arrow className="rightArrow">
-                        <img src={`${process.env.PUBLIC_URL}/icons/next.png`} />
+                        <img
+                            src={`${process.env.PUBLIC_URL}/icons/next.png`}
+                            onClick={() => {
+                                pageNum =
+                                    Math.ceil(listCnt / 4) === pageNum
+                                        ? pageNum
+                                        : pageNum + 1;
+                                onMove();
+                            }}
+                        />
                     </Arrow>
                 ) : (
                     <Blank className="rightArrow">　</Blank>

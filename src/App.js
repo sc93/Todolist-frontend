@@ -9,6 +9,7 @@ import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import TodoPage from "./pages/TodoPage";
+import WritePage from "./pages/WritePage";
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/todo/:id" component={TodoPage} />
+            <Route path="/write" component={WritePage} />
         </>
     );
 };
