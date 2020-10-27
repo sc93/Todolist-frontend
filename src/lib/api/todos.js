@@ -7,3 +7,8 @@ export const listTodos = ({ term, _id }) => {
     });
     return client.get(`/api/todos?${queryString}`);
 };
+
+export const readTodo = ({ id }) => {
+    console.log(id);
+    return client.get(`/api/todos/${id}`);
+};
