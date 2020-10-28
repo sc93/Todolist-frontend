@@ -10,9 +10,11 @@ const MainContainer = () => {
         todos: todos.todos,
     }));
     const dispatch = useDispatch();
+
     useEffect(() => {
         if (user) dispatch(listTodos({ _id: user.user._id }));
     }, [dispatch, user]);
+
     return user ? <TodolistTemplate todolist={todos} /> : <Main />;
 };
 

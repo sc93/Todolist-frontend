@@ -10,14 +10,12 @@ const TodoViewerContainer = () => {
         todo,
     }));
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(readTodo(id));
     }, [dispatch, id]);
-    return (
-        <div>
-            <TodoViewer todo={todo} />
-        </div>
-    );
+
+    return <TodoViewer todo={todo} />;
 };
 
 export default TodoViewerContainer;
