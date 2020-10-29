@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Quill from "quill";
 import "quill/dist/quill.bubble.css";
 import palette from "../../lib/style/palette";
+import DatePicker from "./DatePicker";
 const EditorBlock = styled.div`
     padding: 2rem 1rem;
     color: black;
@@ -16,7 +17,7 @@ const TitleInput = styled.input`
     padding-bottom: 0.5rem;
     border: none;
     border-bottom: 1px solid ${palette.gray[4]};
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     width: 100%;
 `;
 const QuillWrapper = styled.div`
@@ -63,6 +64,7 @@ const Editor = ({ onChangeField, title, body, date }) => {
                 placeholder="제목을 입력하세요."
                 onChange={onChangeTitle}
             ></TitleInput>
+            <DatePicker />
             <QuillWrapper>
                 <div ref={quillElement}></div>
             </QuillWrapper>

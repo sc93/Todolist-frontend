@@ -25,7 +25,6 @@ const TodolistTemplate = ({ todolist }) => {
     const onWriteTodo = () => {
         history.push("/write");
     };
-    console.log(todolist);
     return (
         <TodolistTemplateBlock>
             {todolist.map((list) => (

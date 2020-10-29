@@ -70,7 +70,7 @@ const Todolist = ({ date, todolist }) => {
                         <img
                             src={`${process.env.PUBLIC_URL}/icons/previous.png`}
                             onClick={() => {
-                                pageNum = 1 == pageNum ? pageNum : pageNum - 1;
+                                pageNum = 1 === pageNum ? pageNum : pageNum - 1;
                                 onMove();
                             }}
                         />

@@ -15,14 +15,13 @@ const EditorContainer = () => {
     const dispatch = useDispatch();
     const onChangeField = useCallback(
         (payload) => {
-            console.log(payload);
             dispatch(changeField(payload));
         },
         [dispatch],
     );
     useEffect(() => {
         dispatch(initialize());
-    }, []);
+    }, [dispatch]);
     return (
         <>
             <Editor

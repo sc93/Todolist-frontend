@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import palette from "../../lib/style/palette";
-import Button from "../Common/Button";
 
 const MainBlock = styled.div`
     display: flex;
