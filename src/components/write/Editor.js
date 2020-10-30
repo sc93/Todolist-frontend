@@ -37,6 +37,8 @@ const QuillWrapper = styled.div`
 const Editor = ({ onChangeField, title, body, date }) => {
     const quillElement = useRef(null);
     const quillInstance = useRef(null);
+    const mounted = useRef(null);
+    console.log(title);
     useEffect(() => {
         quillInstance.current = new Quill(quillElement.current, {
             theme: "bubble",
@@ -58,6 +60,12 @@ const Editor = ({ onChangeField, title, body, date }) => {
         });
     }, [onChangeField]);
 
+    useEffect(() => {
+        if (mounted.current) return;
+        mounted.current = true;
+        quillInstance.current.root.innerHTML = body;
+    }, [body]);
+
     const onChangeTitle = (e) => {
         onChangeField({ key: "title", value: e.target.value });
     };
@@ -66,6 +74,7 @@ const Editor = ({ onChangeField, title, body, date }) => {
             <TitleInput
                 placeholder="제목을 입력하세요."
                 onChange={onChangeTitle}
+                value={title}
             ></TitleInput>
             <DatePicker onChangeField={onChangeField} todo_date={date} />
             <QuillWrapper>

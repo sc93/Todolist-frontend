@@ -9,7 +9,7 @@ const [
     LIST_TODOS,
     LIST_TODOS_SUCCESS,
     LIST_TODOS_FAILURE,
-] = createRequestActionTypes("posts/LIST_TODOS");
+] = createRequestActionTypes("todos/LIST_TODOS");
 
 export const listTodos = createAction(LIST_TODOS, ({ term, _id }) => ({
     term,
@@ -19,7 +19,7 @@ export const listTodos = createAction(LIST_TODOS, ({ term, _id }) => ({
 const listTodosSaga = createRequestSaga(LIST_TODOS, todosAPI.listTodos);
 
 export function* todosSaga() {
-    yield takeLatest(listTodos, listTodosSaga);
+    yield takeLatest(LIST_TODOS, listTodosSaga);
 }
 
 const initialState = {

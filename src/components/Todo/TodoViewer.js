@@ -25,18 +25,13 @@ const TodoContentWrapper = styled.div`
     margin: 2rem 1rem;
     font-size: 1.5rem;
     font-weight: 500;
+    min-height: 320px;
 `;
 const TodoContent = styled.div``;
-const TodoViewer = ({ todo }) => {
-    if (!todo.todo) return null;
-    const {
-        todo_id,
-        title,
-        body,
-        todo_date,
-        writer_date,
-        writer_id,
-    } = todo.todo;
+const TodoViewer = ({ todo, TodoActionButtons }) => {
+    if (!todo) return null;
+    const { todo_id, title, body, todo_date, writer_date, writer_id } = todo;
+
     const getDateString = (d) => {
         const year = d.slice(0, 4);
         const month = d.slice(4, 6);
@@ -59,6 +54,7 @@ const TodoViewer = ({ todo }) => {
                     }}
                 ></TodoContent>
             </TodoContentWrapper>
+            {TodoActionButtons}
         </TodoViewerBlock>
     );
 };

@@ -16,3 +16,11 @@ export const readTodo = ({ id }) => {
 export const writeTodo = ({ title, body, todo_date }) => {
     return client.post(`/api/todos`, { title, body, todo_date });
 };
+
+export const updateTodo = ({ id, title, body, todo_date }) => {
+    return client.patch(`/api/todos/${id}`, { title, body, todo_date });
+};
+
+export const removeTodo = ({ id }) => {
+    return client.delete(`/api/todos/${id}`);
+};

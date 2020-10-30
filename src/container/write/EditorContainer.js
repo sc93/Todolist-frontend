@@ -6,11 +6,14 @@ import Editor from "../../components/write/Editor";
 import { changeField, initialize } from "../../modules/write";
 
 const EditorContainer = () => {
-    const { title, body, date } = useSelector(({ write }) => ({
-        title: write.title,
-        body: write.body,
-        date: write.date,
-    }));
+    const { title, body, todo_date, originalTodoId } = useSelector(
+        ({ write }) => ({
+            title: write.title,
+            body: write.body,
+            todo_date: write.date,
+            originalTodoId: write.originalTodoId,
+        }),
+    );
 
     const dispatch = useDispatch();
     const onChangeField = useCallback(
@@ -20,7 +23,9 @@ const EditorContainer = () => {
         [dispatch],
     );
     useEffect(() => {
-        dispatch(initialize());
+        return () => {
+            dispatch(initialize());
+        };
     }, [dispatch]);
     return (
         <>
@@ -28,7 +33,7 @@ const EditorContainer = () => {
                 onChangeField={onChangeField}
                 title={title}
                 body={body}
-                date={date}
+                date={todo_date}
             />
         </>
     );

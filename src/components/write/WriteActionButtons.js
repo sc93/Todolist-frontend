@@ -16,11 +16,13 @@ const StyledButton = styled(Button)`
     font-size: 1.5rem;
 `;
 
-const WriteActionButtons = ({ onCancel, onPublish }) => {
+const WriteActionButtons = ({ onCancel, onPublish, isEdit }) => {
     return (
         <WriteActionButtonsBlock>
             <StyledButton onClick={onCancel}>취소</StyledButton>
-            <StyledButton onClick={onPublish}>등록</StyledButton>
+            <StyledButton onClick={onPublish}>
+                {isEdit ? "수정" : "등록"}
+            </StyledButton>
         </WriteActionButtonsBlock>
     );
 };
