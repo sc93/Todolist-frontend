@@ -15,11 +15,12 @@ const StyledButton = styled(Button)`
     border-radius: 5px;
     font-size: 1.5rem;
 `;
-const TodoActionButtons = ({ onEdit, onRemove }) => {
+const TodoActionButtons = ({ onEdit, onRemove, onGoBack }) => {
     return (
         <TodoActionButtonsBlock>
             <StyledButton onClick={onRemove}>삭제</StyledButton>
             <StyledButton onClick={onEdit}>수정</StyledButton>
+            <StyledButton onClick={onGoBack}>목록</StyledButton>
         </TodoActionButtonsBlock>
     );
 };

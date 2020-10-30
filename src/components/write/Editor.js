@@ -38,7 +38,6 @@ const Editor = ({ onChangeField, title, body, date }) => {
     const quillElement = useRef(null);
     const quillInstance = useRef(null);
     const mounted = useRef(null);
-    console.log(title);
     useEffect(() => {
         quillInstance.current = new Quill(quillElement.current, {
             theme: "bubble",

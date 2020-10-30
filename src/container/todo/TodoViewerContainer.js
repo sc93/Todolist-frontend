@@ -21,17 +21,22 @@ const TodoViewerContainer = () => {
         dispatch(removeTodo(id));
         history.push("/");
     };
+    const onGoBack = () => {
+        history.goBack();
+    };
     useEffect(() => {
         dispatch(readTodo(id));
     }, [dispatch, id]);
 
     return (
-        <TodoViewer
-            todo={todo}
-            TodoActionButtons={
-                <TodoActionButtons onEdit={onEdit} onRemove={onRemove} />
-            }
-        />
+        <>
+            <TodoViewer todo={todo} />
+            <TodoActionButtons
+                onEdit={onEdit}
+                onRemove={onRemove}
+                onGoBack={onGoBack}
+            />
+        </>
     );
 };
 

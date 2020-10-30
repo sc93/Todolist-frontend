@@ -6,6 +6,8 @@ const TodoViewerBlock = styled.div`
     color: black;
     width: 1024px;
     margin: 0px auto;
+    border: 1px solid ${pallete.gray[4]};
+    margin-top: 2rem;
 `;
 const TodoHead = styled.div`
     border-bottom: 1px solid ${pallete.gray[4]};
@@ -28,7 +30,7 @@ const TodoContentWrapper = styled.div`
     min-height: 320px;
 `;
 const TodoContent = styled.div``;
-const TodoViewer = ({ todo, TodoActionButtons }) => {
+const TodoViewer = ({ todo }) => {
     if (!todo) return null;
     const { todo_id, title, body, todo_date, writer_date, writer_id } = todo;
 
@@ -54,7 +56,6 @@ const TodoViewer = ({ todo, TodoActionButtons }) => {
                     }}
                 ></TodoContent>
             </TodoContentWrapper>
-            {TodoActionButtons}
         </TodoViewerBlock>
     );
 };
