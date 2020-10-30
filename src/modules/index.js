@@ -4,7 +4,7 @@ import user, { userSaga } from "./user";
 import { all } from "redux-saga/effects";
 import todos, { todosSaga } from "./todos";
 import todo, { todoSaga } from "./todo";
-import write from "./write";
+import write, { writeSaga } from "./write";
 const rootReducer = combineReducers({
     auth,
     user,
@@ -13,6 +13,6 @@ const rootReducer = combineReducers({
     write,
 });
 export function* rootSaga() {
-    yield all([authSaga(), userSaga(), todosSaga(), todoSaga()]);
+    yield all([authSaga(), userSaga(), todosSaga(), todoSaga(), writeSaga()]);
 }
 export default rootReducer;

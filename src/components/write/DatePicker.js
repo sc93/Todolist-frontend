@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
@@ -11,27 +11,26 @@ const DatePickerBlock = styled.div`
     .SingleDatePickerInput__withBorder {
         width: 152px;
     }
-    ..DateInput_input__focused {
+    .DateInput_input {
         cursor: pointer;
     }
 `;
 
-const DatePicker = ({ write_date }) => {
+const DatePicker = ({ onChangeField, todo_date }) => {
     const [date, setDate] = useState(null);
     const [focused, setFocused] = useState(null);
-
-    useEffect(() => {
-        // moment().locale("ko");
-    }, []);
+    useEffect(() => {}, [todo_date]);
+    const onDateChange = (date) => {
+        onChangeField({ key: "date", value: date.format("YYYYMMDD") });
+    };
     return (
         <DatePickerBlock>
             <SingleDatePicker
-                date={date} // momentPropTypes.momentObj or null
-                onDateChange={(date) => setDate(date)} // PropTypes.func.isRequired
+                date={!todo_date ? null : moment(todo_date)} // momentPropTypes.momentObj or null
+                onDateChange={onDateChange} // PropTypes.func.isRequired
                 focused={focused} // PropTypes.bool
                 onFocusChange={({ focused }) => {
                     setFocused(focused);
-                    console.log("??");
                 }} // PropTypes.func.isRequired
                 id="your_unique_id" // PropTypes.string.isRequired,
                 readOnly={true}

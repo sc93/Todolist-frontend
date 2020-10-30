@@ -12,3 +12,7 @@ export const readTodo = ({ id }) => {
     console.log(id);
     return client.get(`/api/todos/${id}`);
 };
+
+export const writeTodo = ({ title, body, todo_date }) => {
+    return client.post(`/api/todos`, { title, body, todo_date });
+};

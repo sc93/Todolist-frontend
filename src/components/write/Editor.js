@@ -9,6 +9,9 @@ const EditorBlock = styled.div`
     color: black;
     width: 1024px;
     margin: 0px auto;
+    border: 1px solid ${palette.gray[4]};
+    min-height: 320px;
+    margin-top: 2rem;
 `;
 
 const TitleInput = styled.input`
@@ -64,7 +67,7 @@ const Editor = ({ onChangeField, title, body, date }) => {
                 placeholder="제목을 입력하세요."
                 onChange={onChangeTitle}
             ></TitleInput>
-            <DatePicker />
+            <DatePicker onChangeField={onChangeField} todo_date={date} />
             <QuillWrapper>
                 <div ref={quillElement}></div>
             </QuillWrapper>
