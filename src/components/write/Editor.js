@@ -44,6 +44,7 @@ const Editor = ({
     body,
     date,
     thumbnail,
+    isEdit,
 }) => {
     const quillElement = useRef(null);
     const quillInstance = useRef(null);
@@ -80,7 +81,9 @@ const Editor = ({
     };
     return (
         <EditorBlock>
-            <Thumbnail thumbnail={thumbnail} onChangeFile={onChangeFile} />
+            {isEdit ? null : (
+                <Thumbnail thumbnail={thumbnail} onChangeFile={onChangeFile} />
+            )}
             <TitleInput
                 placeholder="제목을 입력하세요."
                 onChange={onChangeTitle}

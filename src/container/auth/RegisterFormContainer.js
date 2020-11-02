@@ -32,19 +32,16 @@ const RegisterFormContainer = ({ history }) => {
         dispatch(initializeForm("register"));
     }, [dispatch]);
     useEffect(() => {
+        if (auth) {
+            history.push("/login");
+            // dispatch(check());
+            return;
+        }
         if (authError) {
             console.log("auth : ", auth);
-        }
-        if (auth) {
-            console.log(auth);
-            dispatch(check());
+            return;
         }
     }, [dispatch, auth, authError]);
-    useEffect(() => {
-        if (user) {
-            history.push("/");
-        }
-    }, [history, user]);
     return <RegisterForm form={form} onChange={onChange} onSubmit={onSubmit} />;
 };
 
