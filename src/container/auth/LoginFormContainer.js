@@ -41,7 +41,7 @@ const LoginFormContainer = ({ history }) => {
         if (auth) {
             dispatch(check());
         }
-    }, [auth]);
+    }, [dispatch, auth, authError]);
 
     useEffect(() => {
         if (user) {

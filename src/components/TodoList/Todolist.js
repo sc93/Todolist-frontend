@@ -12,7 +12,7 @@ const DateDisplay = styled.div`
     margin-left: 5rem;
 `;
 const CardListWrapper = styled.div`
-    width: 1650px;
+    width: 1660px;
     height: 340px;
     position: relative;
     .leftArrow {

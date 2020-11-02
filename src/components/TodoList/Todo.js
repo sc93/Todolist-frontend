@@ -23,10 +23,12 @@ const Title = styled.div`
     text-align: center;
 `;
 const Todo = ({ todo, onClick }) => {
-    const { todo_id, title, body } = todo;
+    const { todo_id, title } = todo;
     return (
         <TodoBlock onClick={() => onClick(todo_id)}>
-            <ThumbnailWrapper></ThumbnailWrapper>
+            <ThumbnailWrapper>
+                <ThumbnailImg />
+            </ThumbnailWrapper>
             <CardHr />
             <Title>{title}</Title>
         </TodoBlock>

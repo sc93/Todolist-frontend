@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 import pallete from "../../lib/style/palette";
 const TodoViewerBlock = styled.div`
@@ -32,7 +32,7 @@ const TodoContentWrapper = styled.div`
 const TodoContent = styled.div``;
 const TodoViewer = ({ todo }) => {
     if (!todo) return null;
-    const { todo_id, title, body, todo_date, writer_date, writer_id } = todo;
+    const { title, body, todo_date, writer_date } = todo;
 
     const getDateString = (d) => {
         const year = d.slice(0, 4);

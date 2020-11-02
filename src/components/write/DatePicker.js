@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "react-dates/initialize";
 import { SingleDatePicker } from "react-dates";
@@ -17,7 +17,6 @@ const DatePickerBlock = styled.div`
 `;
 
 const DatePicker = ({ onChangeField, todo_date }) => {
-    const [date, setDate] = useState(null);
     const [focused, setFocused] = useState(null);
     useEffect(() => {}, [todo_date]);
     const onDateChange = (date) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RegisterForm from "../../components/Auth/RegisterForm";
 import { changeFiled, initializeForm, register } from "../../modules/auth";
@@ -6,7 +6,6 @@ import { check } from "../../modules/user";
 import { withRouter } from "react-router-dom";
 
 const RegisterFormContainer = ({ history }) => {
-    const [error, setError] = useState(null);
     const dispatch = useDispatch();
     const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
         form: auth.register,
@@ -40,7 +39,7 @@ const RegisterFormContainer = ({ history }) => {
             console.log(auth);
             dispatch(check());
         }
-    }, [auth]);
+    }, [dispatch, auth, authError]);
     useEffect(() => {
         if (user) {
             history.push("/");

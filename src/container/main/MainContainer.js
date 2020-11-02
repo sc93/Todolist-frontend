@@ -13,7 +13,7 @@ const MainContainer = () => {
 
     useEffect(() => {
         if (user) dispatch(listTodos({ _id: user.user._id }));
-    }, [dispatch]);
+    }, [dispatch, user]);
 
     return user ? <TodolistTemplate todolist={todos} /> : <Main />;
 };

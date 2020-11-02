@@ -8,14 +8,13 @@ import { todoUpdate, todoWrite } from "../../modules/write";
 const WriteActionButtonsContainer = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { title, body, date, msg, error, todo, originalTodoId } = useSelector(
+    const { title, body, date, msg, error, originalTodoId } = useSelector(
         ({ write }) => ({
             title: write.title,
             body: write.body,
             date: write.date,
             msg: write.msg,
             error: write.error,
-            todo: write.todo,
             originalTodoId: write.originalTodoId,
         }),
     );

@@ -3,7 +3,7 @@ import createRequestSaga, {
     createRequestActionTypes,
 } from "../lib/createRequestSaga";
 import * as todosAPI from "../lib/api/todos";
-import { takeLatest, call } from "redux-saga/effects";
+import { takeLatest } from "redux-saga/effects";
 
 const [
     LIST_TODOS,

@@ -6,14 +6,11 @@ import Editor from "../../components/write/Editor";
 import { changeField, initialize } from "../../modules/write";
 
 const EditorContainer = () => {
-    const { title, body, todo_date, originalTodoId } = useSelector(
-        ({ write }) => ({
-            title: write.title,
-            body: write.body,
-            todo_date: write.date,
-            originalTodoId: write.originalTodoId,
-        }),
-    );
+    const { title, body, todo_date } = useSelector(({ write }) => ({
+        title: write.title,
+        body: write.body,
+        todo_date: write.date,
+    }));
 
     const dispatch = useDispatch();
     const onChangeField = useCallback(
