@@ -4,6 +4,7 @@ import Quill from "quill";
 import "quill/dist/quill.bubble.css";
 import palette from "../../lib/style/palette";
 import DatePicker from "./DatePicker";
+import Thumbnail from "./Thumbnail";
 const EditorBlock = styled.div`
     padding: 2rem 1rem;
     color: black;
@@ -20,10 +21,12 @@ const TitleInput = styled.input`
     padding-bottom: 0.5rem;
     border: none;
     border-bottom: 1px solid ${palette.gray[4]};
+    margin-top: 1rem;
     margin-bottom: 1rem;
     width: 100%;
 `;
 const QuillWrapper = styled.div`
+    min-height: 200px;
     .ql-editor : {
         padding: 0;
         min-height: 320px;
@@ -34,7 +37,14 @@ const QuillWrapper = styled.div`
         left: 0px;
     }
 `;
-const Editor = ({ onChangeField, title, body, date }) => {
+const Editor = ({
+    onChangeField,
+    onChangeFile,
+    title,
+    body,
+    date,
+    thumbnail,
+}) => {
     const quillElement = useRef(null);
     const quillInstance = useRef(null);
     const mounted = useRef(null);
@@ -70,6 +80,7 @@ const Editor = ({ onChangeField, title, body, date }) => {
     };
     return (
         <EditorBlock>
+            <Thumbnail thumbnail={thumbnail} onChangeFile={onChangeFile} />
             <TitleInput
                 placeholder="제목을 입력하세요."
                 onChange={onChangeTitle}

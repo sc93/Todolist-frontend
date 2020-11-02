@@ -12,8 +12,11 @@ const TodoBlock = styled.div`
 const ThumbnailWrapper = styled.div`
     height: 200px;
     width: 100%;
+    text-align: center;
 `;
-const ThumbnailImg = styled.img``;
+const ThumbnailImg = styled.img`
+    height: 100%;
+`;
 const CardHr = styled.hr`
     margin: 4px;
 `;
@@ -23,11 +26,13 @@ const Title = styled.div`
     text-align: center;
 `;
 const Todo = ({ todo, onClick }) => {
-    const { todo_id, title } = todo;
+    const { todo_id, title, thumbnail } = todo;
     return (
         <TodoBlock onClick={() => onClick(todo_id)}>
             <ThumbnailWrapper>
-                <ThumbnailImg />
+                <ThumbnailImg
+                    src={`http://localhost:3000/thumbnail/${thumbnail}`}
+                />
             </ThumbnailWrapper>
             <CardHr />
             <Title>{title}</Title>

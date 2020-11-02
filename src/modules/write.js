@@ -18,6 +18,7 @@ const [
     TODO_UPDATE_FAILURE,
 ] = createRequestActionTypes("write/TODO_UPDATE");
 const SET_ORIGINAL_TODO = "write/SET_ORIGINAL_TODO";
+const SET_FILE = "wrtie/SET_FILE";
 
 export const initialize = createAction(INITIALIZE);
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
@@ -27,10 +28,11 @@ export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
 export const setOriginalTodo = createAction(SET_ORIGINAL_TODO, (todo) => todo);
 export const todoWrite = createAction(
     TODO_WRITE,
-    ({ title, body, todo_date }) => ({
+    ({ title, body, todo_date, thumbnail }) => ({
         title,
         body,
         todo_date,
+        thumbnail,
     }),
 );
 export const todoUpdate = createAction(
@@ -42,6 +44,7 @@ export const todoUpdate = createAction(
         todo_date,
     }),
 );
+export const setFile = createAction(SET_FILE, (thumbnail) => thumbnail);
 
 const todoWriteSaga = createRequestSaga(TODO_WRITE, todoAPI.writeTodo);
 const todoUpdateSaga = createRequestSaga(TODO_UPDATE, todoAPI.updateTodo);
@@ -53,6 +56,7 @@ const initialState = {
     title: "",
     body: "",
     date: "",
+    thumbnail: null,
     error: null,
     msg: "",
     originalTodoId: "",
@@ -83,6 +87,12 @@ const write = handleActions(
                 body: todo.body,
                 date: todo.todo_date,
                 originalTodoId: todo.todo_id,
+            };
+        },
+        [SET_FILE]: (state, { payload: thumbnail }) => {
+            return {
+                ...state,
+                thumbnail,
             };
         },
     },

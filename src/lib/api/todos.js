@@ -9,12 +9,18 @@ export const listTodos = ({ term, _id }) => {
 };
 
 export const readTodo = ({ id }) => {
-    console.log(id);
     return client.get(`/api/todos/${id}`);
 };
 
-export const writeTodo = ({ title, body, todo_date }) => {
-    return client.post(`/api/todos`, { title, body, todo_date });
+export const writeTodo = ({ title, body, todo_date, thumbnail }) => {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("body", body);
+    formData.append("todo_date", todo_date);
+    formData.append("thumbnail", thumbnail);
+    console.log(thumbnail);
+    console.log(formData);
+    return client.post(`/api/todos`, formData);
 };
 
 export const updateTodo = ({ id, title, body, todo_date }) => {
